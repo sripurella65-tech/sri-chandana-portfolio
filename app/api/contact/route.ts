@@ -1,5 +1,6 @@
 import { sendAlert } from "@/lib/alerts";
 import { prisma } from "@/lib/prisma";
+import { getVisitorMetadata } from "@/lib/visitor";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -18,7 +19,12 @@ const schema = z.object({
 export async function POST(request: Request) {
   try {
     const input = schema.parse(await request.json());
-    const visitor = await prisma.visitor.findUnique({ where: { visitorId: input.visitorId } });
+    const metadata = await getVisitorMetadata();
+    const visitor = await prisma.visitor.upsert({
+      where: { visitorId: input.visitorId },
+      update: {},
+      create: { visitorId: input.visitorId, ...metadata },
+    });
     const submission = await prisma.contactSubmission.create({ data: input });
     void sendAlert("New contact submission", {
       name: submission.name,
