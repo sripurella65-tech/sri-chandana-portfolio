@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Visitor {
+  id             String              @id @default(cuid())
+  visitorId      String              @unique
+  firstSeenAt    DateTime            @default(now())
+  lastSeenAt     DateTime            @updatedAt
+  ipAddress      String?
+  city           String?
+  region         String?
+  country        String?
+  timezone       String?
+  deviceType     String?
+  browser        String?
+  operatingSystem String?
+  userAgent      String?
+  pageViews      PageView[]
+  clickEvents    ClickEvent[]
+  submissions    ContactSubmission[]
+
+  @@map("visitors")
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  visitorId String
+  path      String
+  referrer  String?
+  createdAt DateTime @default(now())
+  visitor   Visitor  @relation(fields: [visitorId], references: [visitorId], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@map("page_views")
+}
+
+model ClickEvent {
+  id        String   @id @default(cuid())
+  visitorId String
+  eventType String
+  target    String?
+  path      String?
+  createdAt DateTime @default(now())
+  visitor   Visitor  @relation(fields: [visitorId], references: [visitorId], onDelete: Cascade)
+
+  @@index([eventType, createdAt])
+  @@map("click_events")
+}
+
+model ContactSubmission {
+  id             String   @id @default(cuid())
+  visitorId      String
+  name           String?
+  email          String?
+  phone          String?
+  company        String?
+  role           String?
+  jobDescription String?
+  message        String?
+  createdAt      DateTime @default(now())
+  visitor        Visitor  @relation(fields: [visitorId], references: [visitorId], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@map("contact_submissions")
+}
