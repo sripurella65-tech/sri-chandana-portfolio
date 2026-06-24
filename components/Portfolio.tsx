@@ -239,7 +239,7 @@ export default function Portfolio() {
               <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-semibold text-slate-400 transition hover:text-white">{item}</a>
             ))}
           </div>
-          <a href="mailto:sripurella25@gmail.com" onClick={() => track("email_click", "navigation")} className="hidden rounded-full border border-cyan/25 px-4 py-2 text-xs font-bold text-cyan transition hover:bg-cyan/10 md:block">
+          <a href="mailto:srichandanapurella25@gmail.com" onClick={() => track("email_click", "navigation")} className="hidden rounded-full border border-cyan/25 px-4 py-2 text-xs font-bold text-cyan transition hover:bg-cyan/10 md:block">
             Let’s talk
           </a>
           <button className="md:hidden" aria-label="Toggle menu" onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button>
@@ -418,8 +418,8 @@ export default function Portfolio() {
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-slate-400">I’m based in Jersey City and open to opportunities across New Jersey, New York, and beyond. Let’s connect.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href="mailto:sripurella25@gmail.com" onClick={() => track("email_click", "contact")} className="flex items-center gap-2 rounded-xl bg-mint px-5 py-3.5 text-sm font-bold text-ink"><Mail size={17} /> Email me</a>
-            <a href="https://linkedin.com/in/sripurella" target="_blank" rel="noreferrer" onClick={() => track("linkedin_click", "contact")} className="flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3.5 text-sm font-bold text-white hover:bg-white/[.05]"><Linkedin size={17} /> LinkedIn</a>
+            <a href="mailto:srichandanapurella25@gmail.com" onClick={() => track("email_click", "contact")} className="flex items-center gap-2 rounded-xl bg-mint px-5 py-3.5 text-sm font-bold text-ink"><Mail size={17} /> Email me</a>
+            <a href="https://www.linkedin.com/in/srichandanap" target="_blank" rel="noreferrer" onClick={() => track("linkedin_click", "contact")} className="flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3.5 text-sm font-bold text-white hover:bg-white/[.05]"><Linkedin size={17} /> LinkedIn</a>
           </div>
         </div>
       </section>
@@ -428,8 +428,8 @@ export default function Portfolio() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
           <p>© {new Date().getFullYear()} Sri Chandana Purella. Built with intention.</p>
           <div className="flex items-center gap-5">
-            <a href="mailto:sripurella25@gmail.com" aria-label="Email"><Mail size={16} /></a>
-            <a href="https://linkedin.com/in/sripurella" aria-label="LinkedIn" target="_blank" rel="noreferrer"><Linkedin size={16} /></a>
+            <a href="mailto:srichandanapurella25@gmail.com" aria-label="Email"><Mail size={16} /></a>
+            <a href="https://www.linkedin.com/in/srichandanap" aria-label="LinkedIn" target="_blank" rel="noreferrer"><Linkedin size={16} /></a>
             <a href="/admin" className="hover:text-slate-300">Admin</a>
           </div>
         </div>
