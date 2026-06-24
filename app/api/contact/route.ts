@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       create: { visitorId: input.visitorId, ...metadata },
     });
     const submission = await prisma.contactSubmission.create({ data: input });
-    void sendAlert("New contact submission", {
+    await sendAlert("New contact submission", {
       name: submission.name,
       email: submission.email,
       phone: submission.phone,

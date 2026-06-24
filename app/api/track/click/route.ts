@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         path: input.path,
       },
     });
-    void sendAlert("Portfolio interaction", {
+    await sendAlert("Portfolio interaction", {
       event: input.eventType,
       target: input.target,
       page: input.path,

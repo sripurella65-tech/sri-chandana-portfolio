@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     await prisma.pageView.create({
       data: { visitorId: input.visitorId, path: input.path, referrer: input.referrer || null },
     });
-    void sendAlert("New portfolio visit", {
+    await sendAlert("New portfolio visit", {
       visitorId: visitor.visitorId,
       page: input.path,
       referrer: input.referrer,
